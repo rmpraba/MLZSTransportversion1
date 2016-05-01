@@ -1,0 +1,1145 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<dom-module id="transportfee-service">
+  <template>
+    <iron-ajax
+        method="post"
+        id="generatefeeajax"
+        url="{{generatefeeurl}}"
+        params="{{generatefeeparam}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="generatefeeResponse"
+        debounce-duration="300"
+        >
+  </iron-ajax>
+
+   <iron-ajax
+        method="post"
+        id="zonefeeajax"
+        url="{{zonefeeurl}}"
+        params="{{zonefeeparam}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="zonefeeResponse"
+        debounce-duration="300"
+        >
+  </iron-ajax>
+
+   <iron-ajax
+        method="post"
+        id="getnameofstuajax"
+        url="{{getnameofstuurl}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="getnameofstuResponse"
+        debounce-duration="300"
+        >
+  </iron-ajax>
+  <iron-ajax
+        method="post"
+        id="payfeeajax"
+        url="{{payfeeurl}}"
+         params="{{payfeeparam}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="payfeeResponse"
+        debounce-duration="300"
+        >
+  </iron-ajax>
+   <iron-ajax
+        method="post"
+        id="chequedetailsajax"
+        url="{{chequedetailsurl}}"
+         params="{{chequedetailsparam}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="chequedetailsResponse"
+        debounce-duration="300"
+        >
+  </iron-ajax>
+
+   <iron-ajax
+        method="post"
+        id="payfee2ajax"
+        url="{{payfee2url}}"
+         params="{{payfee2param}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="payfee2Response"
+        debounce-duration="300"
+        >
+  </iron-ajax>
+   <iron-ajax
+        method="post"
+        id="chequedetails2ajax"
+        url="{{chequedetails2url}}"
+         params="{{chequedetails2param}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="chequedetails2Response"
+        debounce-duration="300"
+        >
+  </iron-ajax>
+    <iron-ajax
+        method="post"
+        id="getfeedataajax"
+        url="{{getfeedataurl}}"
+         params="{{getfeedataparam}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="getfeedataResponse"
+        debounce-duration="300"
+        >
+  </iron-ajax>
+   <iron-ajax
+        method="post"
+        id="getfeezoneajax"
+        url="{{getfeezoneurl}}"
+         params="{{getfeezoneparam}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="getfeezoneResponse"
+        debounce-duration="300"
+        >
+  </iron-ajax>
+  <iron-ajax
+        method="post"
+        id="getfeenameajax"
+        url="{{getfeenameurl}}"
+         params="{{getfeenameparam}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="getfeenameResponse"
+        debounce-duration="300"
+        >
+  </iron-ajax>
+   <iron-ajax
+        method="post"
+        id="sendrequestajax"
+        url="{{sendrequesturl}}"
+         params="{{sendrequestparam}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="sendrequestResponse"
+        debounce-duration="300"
+        >
+  </iron-ajax>
+  <iron-ajax
+        
+        id="getinstalltypeajax"
+        url="{{getinstalltypeurl}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="getinstalltypeResponse"
+        debounce-duration="300"
+        >
+  </iron-ajax>
+
+  <iron-ajax
+        
+        id="zoneinstalltypeajax"
+        url="{{zoneinstalltypeurl}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="zoneinstalltypeResponse"
+        debounce-duration="300"
+        >
+  </iron-ajax>
+
+    <iron-ajax
+        method="post"
+        id="checkchequedetailsajax"
+        url="{{checkchequedetailsurl}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="checkchequedetailsResponse"
+        debounce-duration="300"
+        >
+  </iron-ajax>
+  <iron-ajax
+        method="post"
+        id="updatechequedetailajax"
+        url="{{updatechequedetailurl}}"
+         params="{{updatechequedetailparam}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="updatechequedetailResponse"
+        debounce-duration="300"
+        >
+  </iron-ajax>
+   <iron-ajax
+        method="post"
+        id="updatestuchequeajax"
+        url="{{updatestuchequeurl}}"
+         params="{{updatestuchequeparam}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="updatestuchequeResponse"
+        debounce-duration="300"
+        >
+  </iron-ajax>
+   <iron-ajax
+        method="post"
+        id="datepickinsta1ajax"
+        url="{{datepickinsta1url}}"
+        params="{{datepickinsta1param}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="datepickinsta1Response"
+        debounce-duration="300"
+        >
+  </iron-ajax>
+   <iron-ajax
+        method="post"
+        id="datepickinsta1chequeajax"
+        url="{{datepickinsta1chequeurl}}"
+        params="{{datepickinsta1chequeparam}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="datepickinsta1chequeResponse"
+        debounce-duration="300"
+        >
+  </iron-ajax>
+   <iron-ajax
+        method="post"
+        id="datepickinsta2ajax"
+        url="{{datepickinsta2url}}"
+        params="{{datepickinsta2param}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="datepickResponse"
+        debounce-duration="300"
+        >
+  </iron-ajax>
+   <iron-ajax
+        method="post"
+        id="datepickinsta2chequeajax"
+        url="{{datepickinsta2chequeurl}}"
+        params="{{datepickinsta2chequeparam}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="datepickchequeResponse"
+        debounce-duration="300"
+        >
+  </iron-ajax>
+   <iron-ajax
+        method="post"
+        id="receiptseqajax"
+        url="{{receiptsequrl}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="receiptseqResponse"
+        debounce-duration="300"
+        >
+  </iron-ajax>
+   <iron-ajax
+        method="post"
+        id="updatereceiptseqajax"
+        url="{{updatereceiptsequrl}}"
+         params="{{updatereceiptparam}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="updatereceiptseqResponse"
+        debounce-duration="300"
+        >
+  </iron-ajax>
+<iron-ajax
+        method="post"
+        id="receiptnoajax"
+        url="{{receiptnourl}}"
+         params="{{receiptnoparam}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="receiptnoResponse"
+        debounce-duration="300"
+        >
+  </iron-ajax>
+    <iron-ajax
+        method="post"
+        id="getstureceiptajax"
+        url="{{getstureceipturl}}"
+         params="{{getstureceiptparam}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="getstureceiptResponse"
+        debounce-duration="300"
+        >
+  </iron-ajax>
+  <iron-ajax
+        method="post"
+        id="pendingajax"
+        url="{{pendingurl}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="pendingResponse"
+        debounce-duration="300"
+        >
+  </iron-ajax>
+
+   <iron-ajax
+        method="post"
+        id="getreceiptinfoajax"
+        url="{{getreceiptinfourl}}"
+         params="{{getreceiptinfoparam}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="getreceiptinfoResponse"
+          </iron-ajax>
+  <iron-ajax
+        method="post"
+        id="discountreportbynameajax"
+        url="{{discountreportbynameurl}}"
+        handle-as="json"
+        content-type="application/json"
+        on-response="discountreportbynameResponse"
+        debounce-duration="300"
+        >
+  </iron-ajax>
+    </template>
+
+     <script>
+  (function() {
+  
+    var zonename;
+    var stuid;
+    var feez="";
+    var fromd;
+    var tod;
+    var studname;
+    var feeresult;
+    var uchequeno;
+    var uchequestatus;
+    var uinstalltype;
+    var receiptcreate=[];
+    var receiptid;
+    var feeresultinsta1;
+    var collection1;
+    var collection1cheque;
+    var total_collection_cash;
+    var collectreport=[];
+    var recstudid;
+    var dadname;
+    var chenum;
+    var chedate;
+    var banknm;
+    var feeresultinsta1;
+    var feeresultinsta2;
+    var feeresultinsta1cheque;
+    var feeresultinsta2cheque;
+    var cashcount;
+    var chequecount;
+    var rstudid;
+    var chequearr=[];
+
+
+    Polymer({
+      is: "transportfee-service",
+        generatefee:function(studid)
+     {
+      
+      this.generatefeeurl=sessionStorage.getItem("addrinfo")+"/reportfee-card";
+        var obj={"studid":""}
+        obj.studid=studid;
+        this.generatefeeparam=obj;
+        this.$.generatefeeajax.generateRequest();
+     },
+        zonefee:function(studid)
+     {
+      
+      this.zonefeeurl=sessionStorage.getItem("addrinfo")+"/zonefee-card";
+        var obj={"studid":""}
+        obj.studid=studid;
+        this.zonefeeparam=obj;
+        this.$.zonefeeajax.generateRequest();
+     },
+     zonefeeResponse:function(e)
+     {
+      
+        feeresult=e.detail.response.returnval;
+       document.querySelector('transportfee-service').zoneinstalltype();
+     },
+     generatefeeResponse:function(e)
+     {
+      
+        feeresult=e.detail.response.returnval;
+       document.querySelector('transportfee-card').feearr=feeresult;
+       document.querySelector('transportfee-service').getinstalltype();
+     },
+     getnameofstu:function()
+     {
+      //alert('hi');
+      this.getnameofstuurl=sessionStorage.getItem("addrinfo")+"/getnameofstu-card";
+       this.$.getnameofstuajax.generateRequest();
+     },
+     getnameofstuResponse:function(e)
+     {
+
+      var nameitem=e.detail.response.returnval;
+      
+      document.querySelector('transportfee-card').autocompletename(nameitem);
+     },
+     payfee:function(install,studid,paytype,instype)
+     {
+       rstudid=studid;
+       this.payfeeurl=sessionStorage.getItem("addrinfo")+"/payfee-card";
+        var obj={"studid":"","installfee":"","paytype":"","instype":""}
+        obj.studid=studid;
+        obj.installfee=install;
+        obj.paytype=paytype;
+        obj.instype=instype;
+        this.payfeeparam=obj;
+        receiptcreate.push(obj);
+        this.$.payfeeajax.generateRequest();
+     },
+     payfeeResponse:function(e)
+     {
+        var pay1success=e.detail.response.returnval;
+        if(pay1success=='success')
+        {
+            alert("Paid Successfully");
+            document.querySelector('zonetostudent-card').gotozone();
+        }
+      },
+      generatereceipt:function()
+      {
+        this.receiptsequrl=sessionStorage.getItem("addrinfo")+"/receiptsequence";
+        this.$.receiptseqajax.generateRequest();
+      },
+      receiptseqResponse:function(e)
+      {
+        var receiptschoolid=e.detail.response.returnval[0].schoolid;
+        var receiptseq=e.detail.response.returnval[0].sequence;
+        receiptid=receiptschoolid+receiptseq;
+        this.updatereceiptsequrl=sessionStorage.getItem("addrinfo")+"/updatereceiptsequence";
+        var obj={"schoolid":"","sequence":""}
+        obj.schoolid=receiptschoolid;
+        obj.sequence =receiptseq;
+        this.updatereceiptparam =obj;
+        this.$.updatereceiptseqajax.generateRequest();
+         this.receiptnourl=sessionStorage.getItem("addrinfo")+"/receiptnoinfee";
+        var obj={"receiptno":"","studid":""}
+        obj.receiptno=receiptid;
+        obj.studid =rstudid;
+        this.receiptnoparam =obj;
+        this.$.receiptnoajax.generateRequest();
+
+      },
+      updatereceiptseqResponse:function()
+      {
+        recstudid=receiptcreate[0].studid;
+          this.getstureceipturl=sessionStorage.getItem("addrinfo")+"/getstureceipt";
+           var obj={"stid":""}
+            obj.stid=recstudid;
+           this.getstureceiptparam =obj;
+        this.$.getstureceiptajax.generateRequest();
+
+        this.getreceiptinfourl=sessionStorage.getItem("addrinfo")+"/getparentinfo";
+          
+           this.getreceiptinfoparam =obj;
+        this.$.getreceiptinfoajax.generateRequest();
+       
+        
+     },
+     getreceiptinfoResponse:function(e){
+        dadname=e.detail.response.returnval[0].parent_name;
+       // alert(dadname);
+      },
+     getstureceiptResponse:function(e)
+     {
+    var recarr1=[];
+      var recarr=[];
+      var cheqarr=[];
+      var  getstu=e.detail.response.returnval;
+      var dt=new Date();
+var todate=dt.getFullYear()+"/"+(dt.getMonth()+1)+"/"+dt.getDate();
+var yr=dt.getFullYear()+' - '+(dt.getFullYear()+1);
+for(var i=0;i<receiptcreate.length;i++)
+{
+  if(receiptcreate[i].instype=="installment1")
+  {
+var feezxc=receiptcreate[i].installfee;
+document.querySelector('receipt-card').convertrs(feezxc);
+
+
+var recobj={"receiptid":"","studname":"","classname":"","section":"","installtype":"","installfee":"","paytype":""}
+recobj.receiptno=receiptid;
+recobj.studname=getstu[0].student_name;
+recobj.classname=getstu[0].classname;
+recobj.section=getstu[0].section;
+recobj.installtype=receiptcreate[i].instype;
+recobj.installfee=receiptcreate[i].installfee;
+recobj.paytype=receiptcreate[i].paytype;
+recobj.today=todate;
+recobj.stid=recstudid;
+recobj.session=yr;
+recobj.parent=dadname;
+recarr.push(recobj);
+        document.querySelector('receipt-card').receiptarr=recarr;
+        var pt=receiptcreate[i].paytype;
+       if(pt=='Cheque'){
+        for(var i=0;i<chequearr.length;i++)
+        {
+          if(chequearr[i].installtype==receiptcreate[i].instype)
+          {
+            var cqobj={"cheno":"","cqdate":"","bknm":""}
+            cqobj.cheno=chequearr[i].chequenum;
+            cqobj.cqdate=chequearr[i].chequedate;
+            cqobj.bknm=chequearr[i].bankname;
+            cheqarr.push(cqobj);
+            document.querySelector('receipt-card').chequearray(cqobj);
+          }
+          }
+        }
+      }
+else if(receiptcreate[i].instype=="installment2")
+  {
+    
+var recobj1={"receiptid":"","studname":"","classname":"","section":"","installtype":"","installfee":"","paytype":""}
+recobj1.receiptno=receiptid;
+recobj1.studname=getstu[0].student_name;
+recobj1.classname=getstu[0].classname;
+recobj1.section=getstu[0].section;
+recobj1.installtype=receiptcreate[i].instype;
+recobj1.installfee=receiptcreate[i].installfee;
+recobj1.paytype=receiptcreate[i].paytype;
+recobj1.today=todate;
+recobj1.stid=recstudid;
+recobj1.session=yr;
+recobj1.parent=dadname;
+recarr1.push(recobj1);
+       var feeinw=recobj1.installfee;
+        document.querySelector('cqreceipt-card').convertrss(feeinw);
+        document.querySelector('cqreceipt-card').receiptarr=recarr1;
+          var pt1=receiptcreate[i].paytype;
+       if(pt1=='Cheque')
+       {
+        
+        for(var j=0;j<chequearr.length;j++)
+        {
+        
+          if(chequearr[j].installtype==recobj1.installtype)
+          {
+            var cqobj={"cheno":"","cqdate":"","bknm":""}
+            cqobj.cheno=chequearr[j].chequenum;
+            cqobj.cqdate=chequearr[j].chequedate;
+            cqobj.bknm=chequearr[j].bankname;
+            cheqarr.push(cqobj);
+            document.querySelector('cqreceipt-card').chequearray(cqobj);
+          }
+          }
+        }
+      }
+}
+        document.querySelector('transport-app').setPage("receipt","Fee Receipt");
+     },
+     chequeinfo:function(stdid,name,chequenum,bankname,chequedate,installtype)
+     {
+      chenum=chequenum;
+      chedate=chequedate;
+      banknm=bankname;
+      this.chequedetailsurl=sessionStorage.getItem("addrinfo")+"/chequedetails";
+        var obj={"studid":"","name":"","chequenum":"","bankname":"","chequedate":"","installtype":"","chequestatus":""}
+        obj.studid=stdid;
+        obj.name=name;
+        obj.chequenum=chequenum;
+        obj.bankname=bankname;
+        obj.chequedate=chequedate;
+        obj.installtype=installtype;
+        obj.chequestatus="processing";
+        this.chequedetailsparam=obj;
+        chequearr.push(obj);
+        this.$.chequedetailsajax.generateRequest();
+
+     },
+    
+    
+     getfeedata:function(id)
+     {
+       this.getfeedataurl=sessionStorage.getItem("addrinfo")+"/getfeedata";
+        var obj={"studid":""}
+        obj.studid=id;
+        this.getfeedataparam=obj;
+        this.$.getfeedataajax.generateRequest(); 
+     },
+     getfeedataResponse:function(e){
+        //alert(JSON.stringify(e.detail.response.returnval));
+        stuid=e.detail.response.returnval[0].student_id;
+        var zonid=e.detail.response.returnval[0].zone_id,
+        feez=e.detail.response.returnval[0].fees;
+        document.querySelector('discountstudent-card').fees=feez;
+        var fromdzxc=e.detail.response.returnval[0].from_date;
+        var todzxc=e.detail.response.returnval[0].to_date;
+        fromd=new Date(fromdzxc);
+        tod=new Date(todzxc);
+        
+        
+        this.getfeezoneurl=sessionStorage.getItem("addrinfo")+"/getfeezone";
+        var obj={"zone":""}
+        obj.zone=zonid;
+        this.getfeezoneparam=obj;
+        this.$.getfeezoneajax.generateRequest(); 
+
+       //document.querySelector('transportfee-card').feearr=feeresult;
+     },
+     getfeezoneResponse:function(e){
+        zonenam=e.detail.response.returnval[0].zone_name;
+
+        this.getfeenameurl=sessionStorage.getItem("addrinfo")+"/getfeename";
+        var obj={"sid":""}
+        obj.sid=stuid;
+        this.getfeenameparam=obj;
+        this.$.getfeenameajax.generateRequest(); 
+     },
+     getfeenameResponse:function(e){
+
+        var studnam=e.detail.response.returnval[0].student_name;
+        var schooltyp=e.detail.response.returnval[0].school_type; 
+
+         var fromdatz=fromd.getFullYear()+"/"+(fromd.getMonth()+1)+"/"+fromd.getDate();
+        var todatz=tod.getFullYear()+"/"+(tod.getMonth()+1)+"/"+tod.getDate();
+        document.querySelector('discountstudent-card').id=stuid;
+        document.querySelector('discountstudent-card').studname=studnam;
+        document.querySelector('discountstudent-card').zonename=zonenam;
+        document.querySelector('discountstudent-card').schooltype=schooltyp;
+        
+        document.querySelector('discountstudent-card').fromdate=fromdatz;
+        document.querySelector('discountstudent-card').todate=todatz;
+
+     },
+     sendrequest:function(id,stuname,schooltypez,zonname,feesz,fromdatez,todatez,schooltypez,disamtz,reason){
+        var toda=new Date();
+        var fromdat=new Date(fromdatez);
+         var todat =new Date(todatez);
+        var fromdatey=fromdat.getFullYear()+"/"+(fromdat.getMonth()+1)+"/"+fromdat.getDate();
+        var todatey=todat.getFullYear()+"/"+(todat.getMonth()+1)+"/"+todat.getDate();
+        var today=toda.getFullYear()+"/"+(toda.getMonth()+1)+"/"+toda.getDate();
+       this.sendrequesturl="http://localhost:8081/sendrequest";
+        var obj={"stid":"","stname":"","schooltypezx":"","zoname":"","feesx":"","fromdatx":"","todatx":"","schooltypex":"","disamtx":"","reasonx":"","todayx":""}
+        obj.stid=id;
+        obj.stname=stuname;
+        obj.schooltypezx=schooltypez;
+        obj.zoname=zonname;
+        obj.feesx=feesz;
+        obj.fromdatx=fromdatey;
+        obj.todatx=todatey;
+        obj.schooltypex=schooltypez;
+        obj.disamtx=disamtz;
+        obj.reasonx=reason;
+        obj.todayx=today;
+        this.sendrequestparam=obj;
+        this.$.sendrequestajax.generateRequest();  
+     },
+     sendrequestResponse:function(e){
+        var result=e.detail.response.returnval;
+        if(result=='success')
+        {
+            alert('Request sent');
+        }
+        else
+        {
+            alert('Request failed');
+        }
+     },
+    getinstalltype:function(){
+        this.getinstalltypeurl="../../configfile/installmenttype.json";
+        this.$.getinstalltypeajax.generateRequest(); 
+    },
+    zoneinstalltype:function(){
+        this.zoneinstalltypeurl="../../configfile/installmenttype.json";
+        this.$.zoneinstalltypeajax.generateRequest(); 
+    },
+    getinstalltypeResponse:function(e){
+        var feepercent;
+        var installarr=[];
+        var install1fee;
+        var install2fee;
+        var install1date;
+        var install2date;
+        var discountfee;
+        var feestudid;
+        var mode1;
+        var mode2;
+        var feestudname;
+        var date1;
+        var date2;
+        var install1status;
+        var install2status;
+        var install1fine;
+        var install2fine;
+        var dadname;
+
+      feestudname=feeresult[0].student_name;
+      feestudid=feeresult[0].id;
+      discountfee=feeresult[0].discount_fee;
+      feepercent=feeresult[0].fees;
+      mode1=feeresult[0].modeofpayment1;
+      mode2=feeresult[0].modeofpayment2;
+      install1fee=feeresult[0].installment_1;
+      install2fee=feeresult[0].installment_2;
+      install1status=feeresult[0].install1_status;
+      install2status=feeresult[0].install2_status;
+      install1fine=feeresult[0].install1_fine;
+      install2fine=feeresult[0].install2_fine;
+      var d1=feeresult[0].installment_1Date;
+      date1=new Date(d1);
+      install1date=date1.getFullYear()+"/"+(date1.getMonth()+1)+"/"+date1.getDate();
+      var d2=feeresult[0].installment_2Date;
+      date2=new Date(d2);
+      install2date=date2.getFullYear()+"/"+(date2.getMonth()+1)+"/"+date2.getDate();
+        var installdata=e.detail.response;
+        //alert(feepercent+''+discountfee);
+        for(var i=0;i<installdata.length;i++)
+        {
+             var paidstatus;
+             var paiddate;
+             var paymode;
+             var installstatus;
+             var fine;
+            //alert(feepercent);
+            //alert(installdata[i].amt_percentage);
+            if(installdata[i].install_type=="installment1")
+            {
+                if(install1fee>0 && install1status!="bounce")
+                {
+                 paidstatus=true;
+                 paiddate=install1date;
+                 paymode=mode1;
+                 installstatus=install1status;
+                 fine=install1fine;
+
+                }
+                else
+                {
+                    paidstatus=false;
+                    paiddate="no";
+                    paymode="";
+                    installstatus="";
+                    fine=install1fine;
+
+                }
+            }
+             if(installdata[i].install_type=="installment2")
+            {
+                if(install2fee>0 && install2status!="bounce")
+                {
+                 paidstatus=true;
+                 paiddate=install2date;
+                 paymode=mode2;
+                 installstatus=install2status;
+                 fine=install2fine;
+
+                }
+                else
+                {
+                    paidstatus=false;
+                    paiddate="no";
+                    paymode="";
+                    installstatus="";
+                    fine=install2fine;
+                }
+            }
+            //alert(installdata[i].amt_percentage);
+            var obj={"installtype":"","amount":"","paydate":"","paidstatus":"","installdate":"","paymentmode":"","feestudid":"","feestudname":"","installstatus":""}
+            obj.installtype=installdata[i].install_type;
+            obj.amount=((parseInt(feepercent)-parseInt(discountfee))/100)*parseInt(installdata[i].amt_percentage)+parseInt(fine);
+            obj.paydate=installdata[i].paydate;
+            obj.installdate=paiddate;
+            obj.paidstatus=paidstatus;
+            obj.paymentmode=paymode;
+            obj.feestudid=feestudid;
+            obj.feestudname=feestudname;
+            obj.installstatus=installstatus;
+            installarr.push(obj);
+        }
+        //alert(JSON.stringify(installarr));
+
+//alert(JSON.stringify(e.detail.response));
+document.querySelector('transportfee-card').installmentarr=installarr;
+     },
+ zoneinstalltypeResponse:function(e){
+        var feepercent;
+        var installarr=[];
+        var install1fee;
+        var install2fee;
+        var install1date;
+        var install2date;
+        var discountfee;
+        var feestudid;
+        var mode1;
+        var mode2;
+        var feestudname;
+        var date1;
+        var date2;
+        var install1status;
+        var install2status;
+        var install1fine;
+        var install2fine;
+        var dadname;
+
+      feestudname=feeresult[0].student_name;
+      feestudid=feeresult[0].id;
+      discountfee=feeresult[0].discount_fee;
+      feepercent=feeresult[0].fees;
+      mode1=feeresult[0].modeofpayment1;
+      mode2=feeresult[0].modeofpayment2;
+      install1fee=feeresult[0].installment_1;
+      install2fee=feeresult[0].installment_2;
+      install1status=feeresult[0].install1_status;
+      install2status=feeresult[0].install2_status;
+      install1fine=feeresult[0].install1_fine;
+      install2fine=feeresult[0].install2_fine;
+      var d1=feeresult[0].installment_1Date;
+      date1=new Date(d1);
+      install1date=date1.getFullYear()+"/"+(date1.getMonth()+1)+"/"+date1.getDate();
+      var d2=feeresult[0].installment_2Date;
+      date2=new Date(d2);
+      install2date=date2.getFullYear()+"/"+(date2.getMonth()+1)+"/"+date2.getDate();
+        var installdata=e.detail.response;
+        //alert(feepercent+''+discountfee);
+        for(var i=0;i<installdata.length;i++)
+        {
+             var paidstatus;
+             var paiddate;
+             var paymode;
+             var installstatus;
+             var fine;
+            //alert(feepercent);
+            //alert(installdata[i].amt_percentage);
+            if(installdata[i].install_type=="installment1")
+            {
+                if(install1fee>0 && install1status!="bounce")
+                {
+                 paidstatus=true;
+                 paiddate=install1date;
+                 paymode=mode1;
+                 installstatus=install1status;
+                 fine=install1fine;
+
+                }
+                else
+                {
+                    paidstatus=false;
+                    paiddate="no";
+                    paymode="";
+                    installstatus="";
+                    fine=install1fine;
+
+                }
+            }
+             if(installdata[i].install_type=="installment2")
+            {
+                if(install2fee>0 && install2status!="bounce")
+                {
+                 paidstatus=true;
+                 paiddate=install2date;
+                 paymode=mode2;
+                 installstatus=install2status;
+                 fine=install2fine;
+
+                }
+                else
+                {
+                    paidstatus=false;
+                    paiddate="no";
+                    paymode="";
+                    installstatus="";
+                    fine=install2fine;
+                }
+            }
+            //alert(installdata[i].amt_percentage);
+            var obj={"installtype":"","amount":"","paydate":"","paidstatus":"","installdate":"","paymentmode":"","feestudid":"","feestudname":"","installstatus":""}
+            obj.installtype=installdata[i].install_type;
+            obj.amount=((parseInt(feepercent)-parseInt(discountfee))/100)*parseInt(installdata[i].amt_percentage)+parseInt(fine);
+            obj.paydate=installdata[i].paydate;
+            obj.installdate=paiddate;
+            obj.paidstatus=paidstatus;
+            obj.paymentmode=paymode;
+            obj.feestudid=feestudid;
+            obj.feestudname=feestudname;
+            obj.installstatus=installstatus;
+            installarr.push(obj);
+        }
+        //alert(JSON.stringify(installarr));
+
+//alert(JSON.stringify(e.detail.response));
+document.querySelector('zonetostudent-card').installmentarr=installarr;
+     },
+
+     checkchequedetails:function()
+     {
+         this.checkchequedetailsurl=sessionStorage.getItem("addrinfo")+"/checkchequedetails";
+        this.$.checkchequedetailsajax.generateRequest(); 
+     },
+     checkchequedetailsResponse:function(e)
+     {
+        var chequedetailarr=[];
+        var cstatus;
+        var chequedetail=e.detail.response.returnval;
+
+      // alert('s'+JSON.stringify(chequedetail));
+        var d=new Date();
+        for(var i=0;i<chequedetail.length;i++)
+        {
+            var d1=new Date(chequedetail[i].cheque_date);
+            var mondiff=(d.getMonth()+1)-(d1.getMonth()+1);
+            var daydiff=d.getDate()-d1.getDate();
+            if(mondiff==0 && daydiff<=5)
+            {
+                cstatus="red";
+            }
+            else
+            {
+                cstatus="no";
+            }
+            var obj={"studid":"","sname":"","chequeno":"","bankname":"","cdate":"","cstatus":"","installtype":""}
+            obj.studid=chequedetail[i].student_id;
+            obj.sname=chequedetail[i].name;
+            obj.chequeno=chequedetail[i].cheque_no;
+            obj.bankname=chequedetail[i].bank_name;
+            obj.cdate=chequedetail[i].cheque_date;
+            obj.cstatus=cstatus;
+            obj.installtype=chequedetail[i].installtype;
+            chequedetailarr.push(obj);
+        }
+
+        document.querySelector('chequedetail-card').chequearr=chequedetailarr;
+        document.querySelector('chequedetail-card').Fnchequedetail(chequedetail);
+
+     },
+     updatechequedetail:function(chequestatus,chequenum,installtype,cname)
+     {
+        uchequeno=cname;
+        uchequestatus=chequestatus;
+        uinstalltype=installtype;
+         this.updatechequedetailurl=sessionStorage.getItem("addrinfo")+"/updatechequedetail";
+        var obj={"chequestatus":"","chequenum":""}
+        obj.chequestatus=chequestatus;
+        obj.chequenum=chequenum;
+        this.updatechequedetailparam=obj;
+        this.$.updatechequedetailajax.generateRequest(); 
+     },
+     updatechequedetailResponse:function(e)
+     {
+        var paidstatus;
+        if(uchequestatus=="cleared")
+        {
+            paidstatus="paid";
+        }
+        else
+        {
+            paidstatus="bounce";
+        }
+
+        this.updatestuchequeurl=sessionStorage.getItem("addrinfo")+"/updatestucheque";
+        var obj={"chequename":"","installtype":"","paidstatus":""}
+        obj.chequename=uchequeno;
+        obj.installtype=uinstalltype;
+        obj.paidstatus=paidstatus;
+        this.updatestuchequeparam=obj;
+        //alert(JSON.stringify(obj));
+        this.$.updatestuchequeajax.generateRequest(); 
+     },
+      datepickinsta1:function(e){
+        this.datepickinsta1url="http://localhost:8081/datepickinsta1";
+        var obj={"e":""}
+        var condate = new Date(e);
+        var todate=condate.getFullYear()+"-"+(condate.getMonth()+1)+"-"+condate.getDate();
+        obj.dates=todate;
+        this.datepickinsta1param=obj;
+        this.$.datepickinsta1ajax.generateRequest();
+      },
+      datepickinsta1Response:function(e){
+        collection1 = 0;
+        feeresultinsta1=e.detail.response.returnval;
+        for(var i=0;i<feeresultinsta1.length;i++)
+        {
+          collection1 += parseInt(e.detail.response.returnval[i].installment_1);
+        }
+        //document.querySelector('feereports-card').feereportarr1=feeresultinsta1;
+      },
+      datepickinsta2:function(e){
+        this.datepickinsta2url="http://localhost:8081/datepickinsta2";
+        var obj={"e":""}
+        var condate = new Date(e);
+        var todate=condate.getFullYear()+"-"+(condate.getMonth()+1)+"-"+condate.getDate();
+        obj.dates=todate;
+        this.datepickinsta2param=obj;
+        this.$.datepickinsta2ajax.generateRequest();
+      },
+      datepickResponse:function(e){
+        var student2time = 0;
+        var collection2 = 0;
+        var count = 0;
+        cashcount = 0;
+        total_collection_cash = 0;
+        feeresultinsta2=e.detail.response.returnval;
+        for(var i=0;i<feeresultinsta2.length;i++)
+        {
+          collection2 += parseInt(e.detail.response.returnval[i].installment_1);
+        }
+        if(collection1 && collection2){
+          total_collection_cash = collection1 + collection2;
+        } else if(collection1) {
+          total_collection_cash = collection1;
+        } else {
+          total_collection_cash = collection2;
+        }
+        for(var i=0;i<feeresultinsta1.length;i++){
+          for (var j = 0; j<feeresultinsta2.length;j++) {
+            if(feeresultinsta1[i].student_id == feeresultinsta2[j].student_id){
+              student2time += parseInt(feeresultinsta1[i].student_id);
+              count++;
+            }
+          }
+        }
+        cashcount = count;
+        /*if(total_collection == 0){
+          document.querySelector('transport-app').setPage("nodata","Fee Reports");
+        } else {*/
+        var feeresultcash = [];
+        if(feeresultinsta1!="")
+        {
+           for(i=0;i<feeresultinsta1.length;i++)
+          {
+           feeresultcash.push(feeresultinsta1[i]);
+          }
+        
+      }
+         if(feeresultinsta2!="")
+        {
+          for(i=0;i<feeresultinsta2.length;i++)
+          {
+           feeresultcash.push(feeresultinsta2[i]);
+          }
+       }
+        document.querySelector('feereports-card').feereportarr=feeresultcash;
+        document.querySelector('feereports-card').total_collection_cash=total_collection_cash;
+        //}
+      },
+      datepickinsta1cheque:function(e){
+        this.datepickinsta1chequeurl="http://localhost:8081/datepickinsta1cheque";
+        var obj={"e":""}
+        var condate = new Date(e);
+        var todate=condate.getFullYear()+"-"+(condate.getMonth()+1)+"-"+condate.getDate();
+        obj.dates=todate;
+        this.datepickinsta1chequeparam=obj;
+        this.$.datepickinsta1chequeajax.generateRequest();
+      },
+      datepickinsta1chequeResponse:function(e){
+        collection1cheque = 0;
+        feeresultinsta1cheque=e.detail.response.returnval;
+        for(var i=0;i<feeresultinsta1cheque.length;i++)
+        {
+          collection1cheque += parseInt(e.detail.response.returnval[i].installment_1);
+        }
+        //document.querySelector('feereports-card').feereportarr1cheque=feeresultinsta1cheque;
+      },
+      datepickinsta2cheque:function(e){
+        this.datepickinsta2chequeurl="http://localhost:8081/datepickinsta2cheque";
+        var obj={"e":""}
+        var condate = new Date(e);
+        var todate=condate.getFullYear()+"-"+(condate.getMonth()+1)+"-"+condate.getDate();
+        obj.dates=todate;
+        this.datepickinsta2chequeparam=obj;
+        this.$.datepickinsta2chequeajax.generateRequest();
+      },
+      datepickchequeResponse:function(e){
+        var collection2cheque = 0;
+        var count = 0;
+        var countcheque = 0;
+        feeresultinsta2cheque=e.detail.response.returnval;
+        for(var i=0;i<feeresultinsta2cheque.length;i++){
+          collection2cheque += parseInt(e.detail.response.returnval[i].installment_1);
+        }
+        if(collection1cheque && collection2cheque){
+          var total_collection_cheque = collection1cheque + collection2cheque;
+        } else if(collection1cheque) {
+          var total_collection_cheque = collection1cheque;
+        } else {
+          var total_collection_cheque = collection2cheque;
+        }
+        if(total_collection_cash && total_collection_cheque){
+          var total_collection = total_collection_cheque + total_collection_cash;
+        } else if(total_collection_cash){
+          var total_collection = total_collection_cash;
+        } else {
+          var total_collection = total_collection_cheque;
+        }
+        if(feeresultinsta1 && feeresultinsta2){
+          var students_paid_cash = feeresultinsta1.length+feeresultinsta2.length;
+        } else if(feeresultinsta1) {
+          var students_paid_cash = feeresultinsta1.length
+        } else {
+          var students_paid_cash = feeresultinsta2.length;
+        }
+        if(feeresultinsta1cheque && feeresultinsta2cheque){
+          var students_paid_cheque = feeresultinsta1cheque.length + feeresultinsta2cheque.length;
+        } else if(feeresultinsta1cheque) {
+          var students_paid_cheque = feeresultinsta1cheque.length;
+        } else {
+          var students_paid_cheque = feeresultinsta2cheque.length;
+        }
+        var students_paid_by_cash = students_paid_cash - cashcount;
+        for(var i=0;i<feeresultinsta1cheque.length;i++){
+          for (var j = 0; j<feeresultinsta2cheque.length;j++) {
+            if(feeresultinsta1cheque[i].student_id == feeresultinsta2cheque[j].student_id){
+              count++;
+            }
+          }
+        }
+        chequecount = count;
+        var students_paid_by_cheque = students_paid_cheque - chequecount;
+        var total_students_paid = students_paid_by_cash + students_paid_by_cheque;
+        //alert(collection1);
+        /*if(total_collection_cheque == 0){
+          document.querySelector('transport-app').setPage("nodata","Fee Reports");
+        } else {*/
+        var feeresultcheque = [];
+        if(feeresultinsta1cheque!="")
+        {
+           for(i=0;i<feeresultinsta1cheque.length;i++)
+          {
+           feeresultcheque.push(feeresultinsta1cheque[i]);
+          }
+        
+      }
+         if(feeresultinsta2cheque!="")
+        {
+          for(i=0;i<feeresultinsta2cheque.length;i++)
+          {
+           feeresultcheque.push(feeresultinsta2cheque[i]);
+          }
+       }
+           document.querySelector('feereports-card').feereportarrcheque=feeresultcheque;
+           document.querySelector('feereports-card').total_collection_cheque=total_collection_cheque;
+           document.querySelector('feereports-card').total_collection= total_collection;
+           document.querySelector('feereports-card').students_paid_by_cash= students_paid_by_cash;
+           document.querySelector('feereports-card').students_paid_by_cheque= students_paid_by_cheque;
+           document.querySelector('feereports-card').total_students_paid= total_students_paid;
+        //}
+      },
+      pending:function(){
+        this.pendingurl=sessionStorage.getItem("addrinfo")+"/pending";
+        this.$.pendingajax.generateRequest();
+      }, 
+      pendingResponse:function(e){
+        var pending=e.detail.response.returnval;
+        document.querySelector('pending-card').pendingarr=pending;
+      },
+       discountbyname:function(){
+       this.discountreportbynameurl=sessionStorage.getItem("addrinfo")+"/discountbyname";
+       this.$.discountreportbynameajax.generateRequest();
+      },
+      discountreportbynameResponse:function(e){
+        var nameitem=e.detail.response.returnval; 
+        document.querySelector('discountstudent-card').autocompletename(nameitem);
+      }
+    });
+ })();
+  </script>
+
+</dom-module>
+
+
+     
